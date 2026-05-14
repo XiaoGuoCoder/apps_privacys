@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoSki Privacy Policy</title>
+<style>
+  :root {
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --accent: #1c55aa;
+    --bg: #ffffff;
+    --card: #f5f5f7;
+    --border: #d2d2d7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 72px; }
+  h1 { font-size: 2.25rem; letter-spacing: -0.01em; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 40px; font-size: 0.95rem; }
+  h2 { font-size: 1.35rem; margin: 32px 0 8px; letter-spacing: -0.005em; }
+  h3 { font-size: 1.05rem; margin: 20px 0 6px; }
+  p, li { font-size: 1.0rem; color: var(--fg); }
+  ul { padding-left: 22px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 8px;
+    font-size: 0.95rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: var(--card); font-weight: 600; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #e8f2ff;
+    color: #1c55aa;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 640px) {
+    h1 { font-size: 1.7rem; }
+    h2 { font-size: 1.15rem; }
+    .wrap { padding: 32px 18px 56px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<h1>GoSki Privacy Policy</h1>
+<p class="sub">Effective Date: May 14, 2026 · Last Updated: May 14, 2026</p>
+
+<div class="card">
+  <strong>Summary.</strong> GoSki is a privacy-first ski tracking app. All your tracks, runs, and analytics are stored locally on your iPhone. GoSki does not collect, sell, or share personal data. The only outbound network request is to a public weather API, and it does not include any personal identifier.
+</div>
+
+<h2>1. Introduction</h2>
+<p>GoSki ("we", "the app") is developed by Xiao Guo. This Privacy Policy explains how GoSki handles information when you use our iOS application. We designed GoSki so that your activity on the mountain stays yours — we do not operate any servers that store your data.</p>
+
+<h2>2. Information We Do NOT Collect</h2>
+<ul>
+  <li>We do not collect your name, email, phone number, or any account information. GoSki does not require an account.</li>
+  <li>We do not collect or transmit your location data, GPS tracks, or activity history to any server we control.</li>
+  <li>We do not use third-party analytics SDKs (no Firebase Analytics, no Facebook SDK, no Mixpanel, no Umeng, etc.).</li>
+  <li>We do not display advertisements and do not integrate any ad SDK.</li>
+  <li>We do not collect device identifiers, IDFA, or IDFV for tracking purposes.</li>
+</ul>
+
+<h2>3. Data Stored on Your Device</h2>
+<p>The following data is created and stored only on your device, inside the app's private sandbox. It never leaves your iPhone unless you explicitly export it yourself.</p>
+<table>
+  <thead><tr><th>Data</th><th>Purpose</th><th>Storage</th></tr></thead>
+  <tbody>
+    <tr><td>GPS coordinates, speed, altitude</td><td>Record your ski runs, compute statistics</td><td>Local (SwiftData)</td></tr>
+    <tr><td>Track summaries and runs</td><td>Show history, charts, personal records</td><td>Local (SwiftData)</td></tr>
+    <tr><td>App preferences</td><td>Remember display settings and units</td><td>Local (UserDefaults)</td></tr>
+  </tbody>
+</table>
+
+<h2>4. Permissions We Request</h2>
+<h3>Location (When In Use & Always)</h3>
+<p>GoSki uses your precise location solely to record your ski runs. The "Always" authorization is requested so tracking can continue when the screen is off or you switch to another app during a run. Location data is processed on-device only and used to compute track statistics; it is never transmitted to us or any third party. You can revoke location access at any time in iOS Settings &rarr; Privacy & Security &rarr; Location Services.</p>
+
+<h2>5. Third-Party Services</h2>
+<p>GoSki makes a single category of outbound network request:</p>
+<ul>
+  <li><strong>Open-Meteo Weather API</strong> (<a href="https://open-meteo.com/">open-meteo.com</a>) — used to fetch public weather forecasts for ski resorts. Requests contain only a resort's approximate coordinates, no user identifier. Open-Meteo is a free, non-commercial public weather service.</li>
+</ul>
+<p>GoSki does not integrate any other third-party service, SDK, or tracker.</p>
+
+<h2>6. Data Security</h2>
+<p>Because your data stays on your iPhone, its security benefits from the iOS sandbox, device encryption, and your passcode / Face ID / Touch ID. We recommend keeping your device's operating system updated and using a strong device passcode.</p>
+
+<h2>7. Data Deletion</h2>
+<p>To delete all data collected by GoSki, simply uninstall the app. Uninstalling removes the app's sandbox and therefore all tracks, runs, and preferences. You may also clear individual tracks from within the app.</p>
+
+<h2>8. Children's Privacy</h2>
+<p>GoSki is a general audience fitness and navigation app. It does not knowingly collect personal information from children under 13. If you are a parent or guardian and believe a child has provided us information through the app, please contact us to confirm; however, because we do not operate user accounts, there is typically no data to remove beyond uninstalling the app from the child's device.</p>
+
+<h2>9. Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. When changes are material, we will update the "Last Updated" date at the top of this page and, where appropriate, include a notice in the app.</p>
+
+<h2>10. Contact Us</h2>
+<p>If you have any questions about this Privacy Policy or how GoSki handles data, please reach out:</p>
+<ul>
+  <li>Email: <a href="mailto:544627835@qq.com">544627835@qq.com</a></li>
+  <li>Developer: Xiao Guo</li>
+</ul>
+
+<h2>11. Apple App Privacy Labels</h2>
+<p>For the App Store's App Privacy section, GoSki declares the following:</p>
+<table>
+  <thead><tr><th>Category</th><th>Declaration</th></tr></thead>
+  <tbody>
+    <tr><td>Data Used to Track You</td><td><span class="tag">None</span></td></tr>
+    <tr><td>Data Linked to You</td><td><span class="tag">None</span></td></tr>
+    <tr><td>Data Not Linked to You</td><td><span class="tag">None</span></td></tr>
+    <tr><td>Data Collection</td><td><span class="tag">Data Not Collected</span></td></tr>
+  </tbody>
+</table>
+
+<div class="footer">© 2026 Xiao Guo. All rights reserved.</div>
+
+</main>
+</body>
+</html>
