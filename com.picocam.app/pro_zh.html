@@ -72,23 +72,11 @@
         .compare-table td { padding: 12px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .compare-table td:nth-child(2), .compare-table td:nth-child(3) { text-align: center; font-size: 16px; }
         .compare-table .pro-col { color: var(--accent-orange); font-weight: 600; }
-        .price-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: 16px; padding: 20px; margin-bottom: 12px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .price-card.recommended { border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255,140,26,0.1); position: relative; }
-        .price-card.recommended::before {
-            content: '推荐'; position: absolute; top: -10px; right: 16px;
-            font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
-            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink)); color: white;
-        }
-        .price-info h3 { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
-        .price-info p { font-size: 12px; color: var(--text-muted); }
-        .price-amount { text-align: right; }
-        .price-amount .number { font-size: 24px; font-weight: 800; }
-        .price-amount .period { font-size: 12px; color: var(--text-muted); }
-        .price-amount .save { font-size: 11px; color: #22c55e; font-weight: 600; }
+        .plan-options { display: flex; gap: 8px; margin-top: 16px; }
+        .plan-chip { flex: 1; text-align: center; padding: 10px 8px; border-radius: 10px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+        .plan-chip .plan-name { font-size: 12px; font-weight: 600; color: white; }
+        .plan-chip .plan-desc { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+        .plan-chip.highlight { border-color: var(--accent-orange); background: rgba(255,140,26,0.06); }
         .cta-section { margin-top: 36px; text-align: center; }
         .cta-button {
             display: block; width: 100%; padding: 16px 24px; border: none; border-radius: 14px;
@@ -162,25 +150,14 @@
             </table>
         </div>
 
-        <div class="section-title animate-in delay-4">选择方案</div>
-        <div class="animate-in delay-4">
-            <div class="price-card recommended">
-                <div class="price-info"><h3>年度订阅</h3><p>最划算方案</p></div>
-                <div class="price-amount"><span class="number">¥18</span><span class="period">/年</span><div class="save">省 81%</div></div>
-            </div>
-            <div class="price-card">
-                <div class="price-info"><h3>月度订阅</h3><p>按月付费，随时取消</p></div>
-                <div class="price-amount"><span class="number">¥8</span><span class="period">/月</span></div>
-            </div>
-            <div class="price-card">
-                <div class="price-info"><h3>终身买断</h3><p>一次购买，永久拥有</p></div>
-                <div class="price-amount"><span class="number">¥38</span><span class="period"> 终身</span></div>
-            </div>
-        </div>
-
         <div class="cta-section animate-in delay-4">
-            <a href="picosnap://upgrade" class="cta-button" id="ctaBtn">立即升级 Pro</a>
-            <p class="cta-sub">在 App 内完成购买 · 支持家庭共享</p>
+            <a href="picosnap://upgrade" class="cta-button" id="ctaBtn">在 App 内查看方案与价格</a>
+            <div class="plan-options">
+                <div class="plan-chip"><div class="plan-name">月度订阅</div><div class="plan-desc">按月付费</div></div>
+                <div class="plan-chip highlight"><div class="plan-name">年度订阅</div><div class="plan-desc">最划算</div></div>
+                <div class="plan-chip"><div class="plan-name">终身买断</div><div class="plan-desc">一次永久</div></div>
+            </div>
+            <p class="cta-sub">提供月度 / 年度 / 终身三种方案<br>支持家庭共享 · 订阅可随时取消</p>
         </div>
 
         <div class="promise animate-in delay-4">
