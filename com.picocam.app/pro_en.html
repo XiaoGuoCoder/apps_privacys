@@ -72,23 +72,11 @@
         .compare-table td { padding: 12px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); }
         .compare-table td:nth-child(2), .compare-table td:nth-child(3) { text-align: center; font-size: 16px; }
         .compare-table .pro-col { color: var(--accent-orange); font-weight: 600; }
-        .price-card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle);
-            border-radius: 16px; padding: 20px; margin-bottom: 12px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .price-card.recommended { border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255,140,26,0.1); position: relative; }
-        .price-card.recommended::before {
-            content: 'BEST VALUE'; position: absolute; top: -10px; right: 16px;
-            font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
-            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink)); color: white;
-        }
-        .price-info h3 { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
-        .price-info p { font-size: 12px; color: var(--text-muted); }
-        .price-amount { text-align: right; }
-        .price-amount .number { font-size: 24px; font-weight: 800; }
-        .price-amount .period { font-size: 12px; color: var(--text-muted); }
-        .price-amount .save { font-size: 11px; color: #22c55e; font-weight: 600; }
+        .plan-options { display: flex; gap: 8px; margin-top: 16px; }
+        .plan-chip { flex: 1; text-align: center; padding: 10px 8px; border-radius: 10px; background: var(--bg-card); border: 1px solid var(--border-subtle); }
+        .plan-chip .plan-name { font-size: 12px; font-weight: 600; color: white; }
+        .plan-chip .plan-desc { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+        .plan-chip.highlight { border-color: var(--accent-orange); background: rgba(255,140,26,0.06); }
         .cta-section { margin-top: 36px; text-align: center; }
         .cta-button {
             display: block; width: 100%; padding: 16px 24px; border: none; border-radius: 14px;
@@ -162,25 +150,14 @@
             </table>
         </div>
 
-        <div class="section-title animate-in delay-4">Choose Your Plan</div>
-        <div class="animate-in delay-4">
-            <div class="price-card recommended">
-                <div class="price-info"><h3>Annual</h3><p>Best value</p></div>
-                <div class="price-amount"><span class="number">$3.99</span><span class="period">/year</span><div class="save">Save 83%</div></div>
-            </div>
-            <div class="price-card">
-                <div class="price-info"><h3>Monthly</h3><p>Billed monthly, cancel anytime</p></div>
-                <div class="price-amount"><span class="number">$1.99</span><span class="period">/month</span></div>
-            </div>
-            <div class="price-card">
-                <div class="price-info"><h3>Lifetime</h3><p>One-time purchase, yours forever</p></div>
-                <div class="price-amount"><span class="number">$6.99</span><span class="period"> once</span></div>
-            </div>
-        </div>
-
         <div class="cta-section animate-in delay-4">
-            <a href="picosnap://upgrade" class="cta-button" id="ctaBtn">Upgrade to Pro</a>
-            <p class="cta-sub">Purchase completes in-app · Family Sharing supported</p>
+            <a href="picosnap://upgrade" class="cta-button" id="ctaBtn">View Plans & Pricing in App</a>
+            <div class="plan-options">
+                <div class="plan-chip"><div class="plan-name">Monthly</div><div class="plan-desc">Flexible</div></div>
+                <div class="plan-chip highlight"><div class="plan-name">Annual</div><div class="plan-desc">Best value</div></div>
+                <div class="plan-chip"><div class="plan-name">Lifetime</div><div class="plan-desc">Once forever</div></div>
+            </div>
+            <p class="cta-sub">Monthly / Annual / Lifetime plans available<br>Family Sharing supported · Cancel anytime</p>
         </div>
 
         <div class="promise animate-in delay-4">
