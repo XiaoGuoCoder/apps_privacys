@@ -1,55 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - XiaoShiJie</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-    h1 { color: #1d1d1f; border-bottom: 2px solid #007AFF; padding-bottom: 10px; }
-    h2 { color: #1d1d1f; margin-top: 30px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-    .effective-date { color: #666; font-style: italic; }
-    .contact { background: #f5f5f7; padding: 15px; border-radius: 8px; margin-top: 20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>小世界 · 隐私政策</title>
+<!--
+  小世界（com.guoxiao.xiaoshijie）隐私政策。
+
+  这份页面同时服务两个消费方，改动时都要顾到：
+  1. App Store Connect 的「隐私政策网址」字段（审核员会打开它）；
+  2. App 内「隐私政策」入口 —— PrivacyPolicyView 用 WKWebView 加载本页。
+
+  ## 为什么必须显式声明浅色背景与深色文字
+  App 是强制深色主题（UIUserInterfaceStyle=Dark），WKWebView 里
+  prefers-color-scheme 恒为 dark。这里**故意不做 dark 适配**：
+  body 显式白底黑字，在 App 内和 Safari 里表现一致、必然可读。
+  曾经因为页面没有自己的背景色，App 侧的深色底透上来压住深色正文，
+  整页几乎不可读（v1.1-b14 实测）。别删下面的 background/color 声明。
+
+  ## 口径一致性硬约束
+  正文所有事实性表述必须与 App 内 ComplianceText.swift 同源：
+  AI 服务商、四要素披露、人脸澄清、权限用途、24 小时处理承诺、撤回路径。
+  改这里就要同步改那里，反之亦然 —— 两处不一致会被审核直接抓住。
+-->
+<style>
+  :root {
+    --text: #1c1c1e;
+    --text-secondary: #48484a;
+    --text-tertiary: #6c6c70;
+    --rule: #e5e5ea;
+    --accent: #8a6d3b;
+    --card: #f7f7f9;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+  h1 {
+    font-size: 26px;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    letter-spacing: -0.2px;
+  }
+  .meta {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    margin: 0 0 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h2 {
+    font-size: 19px;
+    line-height: 1.45;
+    margin: 36px 0 10px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 16px;
+    margin: 22px 0 6px;
+    color: var(--text-secondary);
+  }
+  p { margin: 10px 0; }
+  ul { margin: 10px 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  strong { font-weight: 600; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px;
+    background: var(--card);
+    padding: 1px 5px;
+    border-radius: 4px;
+    word-break: break-all;
+  }
+  .lead {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 0 0 8px;
+  }
+  .lead ul { margin: 8px 0 0; }
+  .callout {
+    border-left: 3px solid var(--accent);
+    padding: 2px 0 2px 14px;
+    margin: 16px 0;
+    color: var(--text-secondary);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 15px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th {
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  a { color: #0a58ca; word-break: break-all; }
+  footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--text-tertiary);
+    font-size: 14px;
+  }
+</style>
 </head>
 <body>
-  <h1>Privacy Policy</h1>
-  <p class="effective-date">Effective Date: 2026-08-21</p>
+<div class="wrap">
 
-  <p>This privacy policy describes how <strong>XiaoShiJie</strong> ("we", "our", or "us") handles your information when you use our application.</p>
+  <h1>小世界 隐私政策</h1>
+  <p class="meta">
+    适用应用：小世界（XiaoShiJie）· <code>com.guoxiao.xiaoshijie</code><br>
+    版本 1.0.0 · 生效日期 2026-08-24
+  </p>
 
-  <h2>Information Collection</h2>
-  <p><strong>We do not collect any personal data.</strong> The app operates entirely on your device without transmitting personal information to external servers.</p>
-
-  <h2>Third-Party Services</h2>
-  <p>The app integrates the following third-party services that may collect data according to their own privacy policies:</p>
-  <ul>
-<li><strong>阿里云 DashScope (AI 服务):</strong> </li>
-  </ul>
-
-  <h2>Data Retention</h2>
-  <p>用户创建的互动世界数据保存在本地设备，AI 服务调用不保留用户数据</p>
-
-  <h2>Data Security</h2>
-  <p>We implement appropriate technical measures to protect any information processed by the app. However, no method of electronic transmission or storage is 100% secure.</p>
-
-  <h2>Children's Privacy</h2>
-  <p>This app is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected such information, we will take steps to delete it.</p>
-
-  <h2>Your Rights</h2>
-  <p>You may request access to, correction of, or deletion of any personal information we may hold. You can also request that we restrict processing of your data.</p>
-
-  <h2>Changes to This Policy</h2>
-  <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the effective date.</p>
-
-  <div class="contact">
-    <h2>Contact Us</h2>
-    <p>If you have any questions about this privacy policy, please contact us:</p>
+  <div class="lead">
+    <p><strong>先说三句最重要的：</strong></p>
     <ul>
-      <li>Email: <a href="mailto:544627835@qq.com">544627835@qq.com</a></li>
+      <li>小世界<strong>没有账号体系、没有我们自己的服务器</strong>。我们不收集、不保存、也无法查看你的任何个人信息。</li>
+      <li>你创建的世界、剧情记录、生成的图片，<strong>只保存在你自己的手机上</strong>。卸载应用即随之删除。</li>
+      <li>使用 AI 功能时，你的<strong>文本内容与你主动上传的照片</strong>会被发送给第三方 AI 服务商处理。这需要你事先明确授权，你也可以随时撤回。</li>
     </ul>
   </div>
+
+  <p>本政策说明小世界如何处理与你有关的信息。请在使用本应用前阅读。本政策与应用内《使用条款》配合适用，两者口径一致。</p>
+
+  <h2>一、我们不收集什么</h2>
+  <p>为免歧义，先明确列出本应用<strong>确定不做</strong>的事：</p>
+  <ul>
+    <li><strong>不需要注册或登录</strong>，不收集手机号、邮箱、姓名或任何身份信息。</li>
+    <li><strong>不采集设备广告标识</strong>（IDFA）或供应商标识（IDFV），不做跨应用追踪。</li>
+    <li><strong>不集成任何第三方统计、崩溃上报或广告 SDK</strong>，不做用户画像、不做行为分析、不投放广告。</li>
+    <li><strong>不读取</strong>你的通讯录、日历、位置、健康数据或相册中的既有照片（相册权限仅用于写入，见第五节）。</li>
+    <li><strong>不出售、不出租、不交换</strong>任何与你有关的信息。</li>
+  </ul>
+
+  <h2>二、保存在你设备上的内容</h2>
+  <p>以下内容全部存放在你手机的应用沙盒内，<strong>不会上传给我们</strong>（我们没有服务器可上传）：</p>
+  <ul>
+    <li>你创建的世界与故事设定、剧情对话记录、AI 生成的图片与你上传的照片素材；</li>
+    <li>「换装秀」中的人像照片、服装照片与换装结果图；</li>
+    <li>你对《使用条款》的同意状态与时间、AI 数据授权状态与时间；</li>
+    <li>你的举报记录、已隐藏内容的标识、屏蔽名单；</li>
+    <li>应用的本地偏好设置与游玩进度。</li>
+  </ul>
+  <p>你可以在应用内删除自己创建的世界；卸载应用会一次性清除上述全部内容。</p>
+
+  <h2>三、发送给第三方 AI 服务的内容</h2>
+  <p>小世界的剧情生成与场景配图由第三方 AI 服务提供，这是本应用<strong>唯一会把你的内容发送出去</strong>的环节。在你首次使用相关功能前，应用会单独展示一份授权说明；<strong>未获得你的明确授权，应用不会向该服务发送任何数据</strong>。</p>
+
+  <table>
+    <tr>
+      <th>会发送什么</th>
+      <td>你输入的故事描述、角色设定与剧情对话文本；你在「换装秀」中主动上传的人物照片与服装照片。</td>
+    </tr>
+    <tr>
+      <th>发送给谁</th>
+      <td>阿里云百炼 DashScope（<code>dashscope.aliyuncs.com</code>），服务提供方为阿里云，数据存储于中国内地。</td>
+    </tr>
+    <tr>
+      <th>用于什么</th>
+      <td>对话生成、文生图、图像编辑、图像内容描述——<strong>仅用于生成你请求的内容</strong>，不用于任何其他目的。</td>
+    </tr>
+    <tr>
+      <th>保留多久</th>
+      <td>小世界没有服务器，<strong>不留存任何副本</strong>；生成结果仅保存在你的手机上。第三方服务商对请求数据的处理与保留，适用其自身隐私政策。</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <p><strong>关于照片与人脸：</strong>「换装秀」上传的照片仅用于 AI 换装图像生成，<strong>不用于身份识别，不采集人脸特征，不做人脸比对</strong>，也不会用于训练任何模型。是否上传完全由你决定，上传前应用会再次向你确认。</p>
+  </div>
+
+  <h3>随时撤回授权</h3>
+  <p>你可以随时在应用内「我的 → 设置与合规 → 撤回 AI 授权」中撤回该授权。撤回后，应用会在网络请求发出前拦截全部 AI 相关请求，直到你重新授权。撤回不影响你已保存在本机的内容。</p>
+
+  <h2>四、内容目录的下载</h2>
+  <p>应用会从我们的内容分发地址下载故事剧本与封面图片，以便在不更新应用的情况下新增故事：</p>
+  <ul>
+    <li>地址：<code>xiaoshijie-catalog.oss-cn-hangzhou.aliyuncs.com</code>（阿里云对象存储上的静态文件，无后端程序）；</li>
+    <li>这是<strong>单向下载</strong>，请求中<strong>不包含你的任何内容或标识</strong>；</li>
+    <li>与任何网络请求一样，服务器的访问日志会记录你的 IP 地址与请求时间，这是互联网通信的固有属性，由阿里云按其日志策略处理，我们不对这些日志做任何分析或关联。</li>
+  </ul>
+
+  <h2>五、设备权限</h2>
+  <p>权限仅在你主动触发对应功能时才会申请，全部可拒绝，拒绝后仅该功能不可用：</p>
+  <table>
+    <tr>
+      <th>相机</th>
+      <td>拍摄物品，交给 AI 鉴定生成图鉴卡片。照片按第三节的授权与说明发送给 AI 服务处理。</td>
+    </tr>
+    <tr>
+      <th>麦克风</th>
+      <td>检测吹气交互（如蒲公英吹散、蜡烛吹灭）。<strong>仅做实时音量强度检测，不录音、不保存音频、不上传任何声音数据。</strong></td>
+    </tr>
+    <tr>
+      <th>相册</th>
+      <td><strong>仅用于写入</strong>——把剧情生成的场景图片保存到你的相册。应用不会读取或浏览你相册中已有的照片。</td>
+    </tr>
+  </table>
+
+  <h2>六、举报、屏蔽与我们能看到的信息</h2>
+  <p>小世界对不良内容与滥用行为持零容忍态度。你可以在任意内容页右侧的「⋯」中举报内容或屏蔽创建者，<strong>我们会在 24 小时内处理</strong>。</p>
+  <p>由于本应用没有服务器，举报通过<strong>电子邮件</strong>送达开发者。这一节需要你特别注意：</p>
+  <ul>
+    <li>举报邮件包含：被举报内容的类型与标识、举报理由、你填写的补充说明（可选）、提交时间、应用版本、举报单号；</li>
+    <li>邮件由你的设备上的邮件客户端发出，因此<strong>开发者会看到你用于发送的邮箱地址</strong>。这是邮件通信的固有属性；我们仅将其用于处理该次举报，不做任何留存以外的用途，也不会加入任何邮件列表；</li>
+    <li>若你不希望暴露邮箱地址，可以在举报面板中选择复制举报内容，通过你认为合适的任何方式发送，或干脆不发送——<strong>内容的本地隐藏与创建者屏蔽在你点击的那一刻就已生效，完全不依赖邮件是否送出</strong>；</li>
+    <li>举报与屏蔽记录会在你的设备上留存，以便应用核验处理状态。</li>
+  </ul>
+
+  <h2>七、内容过滤</h2>
+  <p>应用内置一份本地敏感词规则，对你的文本输入做自动过滤。该规则<strong>完整包含在应用内、不联网</strong>。命中规则的输入会被直接拦截，<strong>既不会提交给 AI 服务，也不会被保存</strong>。AI 返回的内容同样经过一道本地过滤后才展示给你。</p>
+
+  <h2>八、如何删除你的数据</h2>
+  <p>我们手上没有你的任何数据，因此删除操作全部由你在自己的设备上完成，无需向我们申请、也无需等待：</p>
+  <ul>
+    <li><strong>删除单个内容</strong>：在应用内删除对应的世界或记录；</li>
+    <li><strong>停止数据外发</strong>：在「我的 → 设置与合规」中撤回 AI 授权；</li>
+    <li><strong>彻底清除全部数据</strong>：卸载小世界。应用沙盒内的所有内容（世界、图片、授权状态、举报与屏蔽记录）会被系统一并删除，且不可恢复。</li>
+  </ul>
+
+  <h2>九、你的权利</h2>
+  <p>在适用法律赋予你的权利范围内：</p>
+  <ul>
+    <li><strong>知情权</strong>：本政策即为完整说明；应用内「我的 → 设置与合规 → AI 与数据说明」可随时复看数据外发的详细披露。</li>
+    <li><strong>访问与更正</strong>：你的数据全部在你的设备上，你可以直接在应用内查看和修改。<strong>我们不持有任何副本，因此无法代为访问或更正</strong>——这不是拒绝，而是我们确实没有。</li>
+    <li><strong>删除权</strong>：见第八节，由你自主执行，即时生效。</li>
+    <li><strong>撤回同意</strong>：随时可撤回 AI 数据授权，见第三节。</li>
+    <li>对于已发送到第三方 AI 服务的请求数据，你可依据该服务商的隐私政策向其主张相应权利。</li>
+  </ul>
+  <p>如你认为本应用的数据处理存在问题，可通过本政策末尾的邮箱联系我们。</p>
+
+  <h2>十、儿童隐私</h2>
+  <p>本应用<strong>不面向 13 岁以下儿童</strong>，也不会有意收集其个人信息。应用包含 AI 生成的剧情内容，我们建议家长为未成年人使用时提供必要的陪伴与指导。如你认为有 13 岁以下儿童在未经监护人同意的情况下使用了本应用，请联系我们。</p>
+
+  <h2>十一、数据安全</h2>
+  <p>与第三方 AI 服务及内容目录的全部通信均使用 HTTPS 加密传输。存放在你设备上的数据受 iOS 应用沙盒机制保护。请注意：<strong>没有任何一种网络传输或存储方式是绝对安全的</strong>，我们无法作出绝对保证。同时，保护你的设备本身（锁屏密码、系统更新）也是数据安全的重要一环。</p>
+
+  <h2>十二、本政策的变更</h2>
+  <p>我们可能更新本政策。任何变更都会更新本页面内容与顶部的生效日期。涉及数据处理方式实质变化的变更，我们会在应用内重新征集你的同意。请定期查阅本页面。</p>
+
+  <h2>十三、联系我们</h2>
+  <p>对本隐私政策有任何疑问、意见或投诉，欢迎联系：</p>
+  <p><strong>邮箱：<a href="mailto:544627835@qq.com">544627835@qq.com</a></strong></p>
+  <p>我们会尽快回复。涉及举报的邮件，我们承诺在 24 小时内处理。</p>
+
+  <footer>
+    小世界（XiaoShiJie）· com.guoxiao.xiaoshijie<br>
+    本隐私政策版本 1.0.0，生效日期 2026-08-24。
+  </footer>
+
+</div>
 </body>
 </html>
