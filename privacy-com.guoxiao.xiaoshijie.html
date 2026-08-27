@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <title>小世界 · 隐私政策</title>
 <!--
   小世界（com.guoxiao.xiaoshijie）隐私政策。
@@ -11,12 +12,17 @@
   1. App Store Connect 的「隐私政策网址」字段（审核员会打开它）；
   2. App 内「隐私政策」入口 —— PrivacyPolicyView 用 WKWebView 加载本页。
 
-  ## 为什么必须显式声明浅色背景与深色文字
-  App 是强制深色主题（UIUserInterfaceStyle=Dark），WKWebView 里
-  prefers-color-scheme 恒为 dark。这里**故意不做 dark 适配**：
-  body 显式白底黑字，在 App 内和 Safari 里表现一致、必然可读。
-  曾经因为页面没有自己的背景色，App 侧的深色底透上来压住深色正文，
-  整页几乎不可读（v1.1-b14 实测）。别删下面的 background/color 声明。
+  ## 配色：两套主题，且每一套都必须自带背景色
+  App 全局强制深色（RootView 上的 .preferredColorScheme(.dark)），
+  该设置会落到 window.overrideUserInterfaceStyle，因此 WKWebView 内
+  prefers-color-scheme 恒为 dark —— 下面的 dark 分支在 App 内必然命中，
+  取值与 App 的 AppColors 一致（页底 #0D0D17、正文 85% 白、链接 #FFDE9E），
+  使本页与「使用条款」页视觉连续。Safari / 审核员那边则跟随其系统设置。
+
+  **两套主题都必须给 body 显式声明 background**，一处都不能省：
+  曾经因为页面完全没有自己的背景色，App 侧深色底透上来压住深色正文，
+  整页几乎不可读（v1.1-b14 实测）。现在的写法即使 dark 分支意外没命中，
+  也只会退回浅色分支的白底黑字（可读），不会再出现无背景的不可读态。
 
   ## 口径一致性硬约束
   正文所有事实性表述必须与 App 内 ComplianceText.swift 同源：
@@ -24,19 +30,38 @@
   改这里就要同步改那里，反之亦然 —— 两处不一致会被审核直接抓住。
 -->
 <style>
+  /* 浅色（Safari 默认）*/
   :root {
+    --bg: #ffffff;
+    --heading: #1c1c1e;
     --text: #1c1c1e;
     --text-secondary: #48484a;
     --text-tertiary: #6c6c70;
     --rule: #e5e5ea;
     --accent: #8a6d3b;
     --card: #f7f7f9;
+    --link: #0a58ca;
+  }
+  /* 深色（App 内恒走这一支）。取值来源：XiaoShiJie/Shared/Theme/AppColors.swift，
+     改动前先去那里比对，两边不一致会让本页与「使用条款」页看起来是两个 App。*/
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0d17;                        /* AppColors.pageBackground */
+      --heading: #ffffff;                   /* AppColors.textPrimary */
+      --text: rgba(255, 255, 255, 0.85);    /* AppColors.textBody */
+      --text-secondary: rgba(255, 255, 255, 0.60);
+      --text-tertiary: rgba(255, 255, 255, 0.45);
+      --rule: rgba(255, 255, 255, 0.10);    /* AppColors.divider */
+      --accent: #ffd973;                    /* AppColors.accentGold */
+      --card: rgba(255, 255, 255, 0.06);    /* AppColors.noticeFill */
+      --link: #ffde9e;                      /* AppColors.link */
+    }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: #ffffff;
+    background: var(--bg);
     color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
@@ -53,6 +78,7 @@
     line-height: 1.35;
     margin: 0 0 8px;
     letter-spacing: -0.2px;
+    color: var(--heading);
   }
   .meta {
     color: var(--text-tertiary);
@@ -66,6 +92,7 @@
     line-height: 1.45;
     margin: 36px 0 10px;
     padding-top: 4px;
+    color: var(--heading);
   }
   h3 {
     font-size: 16px;
@@ -75,7 +102,7 @@
   p { margin: 10px 0; }
   ul { margin: 10px 0; padding-left: 22px; }
   li { margin: 6px 0; }
-  strong { font-weight: 600; }
+  strong { font-weight: 600; color: var(--heading); }
   code {
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 14px;
@@ -91,11 +118,12 @@
     margin: 0 0 8px;
   }
   .lead ul { margin: 8px 0 0; }
+  /* 人脸澄清那段走这里，属合规关键文案 —— 给正文强度而非次级强度。*/
   .callout {
     border-left: 3px solid var(--accent);
     padding: 2px 0 2px 14px;
     margin: 16px 0;
-    color: var(--text-secondary);
+    color: var(--text);
   }
   table {
     width: 100%;
@@ -114,7 +142,7 @@
     color: var(--text-secondary);
     white-space: nowrap;
   }
-  a { color: #0a58ca; word-break: break-all; }
+  a { color: var(--link); word-break: break-all; }
   footer {
     margin-top: 44px;
     padding-top: 20px;
